@@ -1,0 +1,79 @@
+{
+  "originalrank":
+  {"rank_criteria_vec": [1, 2, 3, 4, 5, 6, 7, 8],
+    "all_rank_by_criteria": [
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4],
+      [1, 2, 3, 4]]},
+  "name": "UN Policy Decision",
+  "method": "approximate",
+  "criteria": ["1-individual-choice", "2-economic-stability" , "3-degree-being-impacted", "4-distance",
+               "5-cultural-proximity", "6-Human-right-politics", "7-biocapacity", "8-public-health"],
+  "subCriteria": {},
+  "alternatives": ["policyA", "policyB", "policyC", "policyD"],
+  "preferenceMatrices": {
+    "criteria": [
+      [1    , 0.25 , 1    , 0.5  , 0.3333   , 0.2    , 0.1667, 0.3333 ],
+      [4    , 1    , 1    , 1    , 1        , 0.5    , 1     , 1],
+      [1    , 1    , 1    , 1    , 0.5      , 0.333  , 0.5   , 1],
+      [2    , 1    , 1    , 1    , 1        , 0.3333 , 1     , 1   ],
+      [3    , 1    , 2    , 1    , 1        , 1      , 1     , 2  ],
+      [5    , 2    , 3    , 3    , 1        , 1      , 3     , 4],
+      [6    , 1    , 2    , 1    , 1        , 0.3333  , 1     , 1   ],
+      [3    , 1    , 1    , 1    , 0.5      , 0.25   , 1     , 1    ]
+    ],
+    "alternatives:1-individual-choice": [
+      [1    , 1     , 0.3333, 0.5  ],
+      [1    , 1     , 0.5   , 0.5  ],
+      [3    , 2     , 1     , 2   ],
+      [2    , 2     , 0.5   , 1     ]
+    ],
+    "alternatives:2-economic-stability": [
+      [1    , 0.5   , 0.2,   0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [5    , 2     , 1     , 0.5   ],
+      [2    , 3     , 2     , 1     ]
+    ],
+    "alternatives:3-degree-being-impacted": [
+      [1    , 0.25   , 0.5, 0.333  ],
+      [4    , 1     , 0.5   , 0.5 ],
+      [2    , 2     , 1     , 0.5   ],
+      [3    , 2     , 2     , 1     ]
+    ],
+    "alternatives:4-distance": [
+      [1    , 0.2   , 1 ,     0.25  ],
+      [5    , 1     , 2   , 1],
+      [1    , 0.5   , 1     , 0.5   ],
+      [4    , 1     , 2     , 1     ]
+    ],
+    "alternatives:5-cultural-proximity": [
+      [1    , 0.5   , 1,      1  ],
+      [2    , 1     , 2      , 2],
+      [1    , 0.5     , 1     , 0.5   ],
+      [1    , 0.5     , 2     , 1     ]
+    ],
+    "alternatives:6-Human-right-politics": [
+      [1    , 1   , 1 , 1  ],
+      [1    , 1     , 1  , 1],
+      [1    , 1     , 1   , 1   ],
+      [1    , 1     , 1     , 1     ]
+    ],
+    "alternatives:7-biocapacity": [
+      [1    , 2   , 5  , 1  ],
+      [0.5  , 1     , 1   , 2],
+      [0.2  , 1     , 1     , 0.5   ],
+      [1    , 0.5   , 2     , 1     ]
+    ],
+    "alternatives:8-public-health": [
+      [1    , 1   , 2 , 1  ],
+      [1    , 1     , 1    ,1],
+      [0.5  , 1     , 1    , 1   ],
+      [1    , 1     , 1    , 1     ]
+    ]
+  }
+}

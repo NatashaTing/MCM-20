@@ -8,42 +8,47 @@ def main():
                         "3-degree-being-impacted", "4-distance",
                         "5-cultural-proximity", "6-Human-right-politics",
                         "7-biocapacity", "8-public-health"]
-
     k = len(matrix_criteria)
 
-    rank_criteria_vec = [1, 2, 3, 4, 5, 6, 7, 8]
-    all_rank_by_criteria = [[1, 2, 3, 4],
+    rank_criteria_vec = [1, 6, 8, 5, 2, 6, 7, 1]
+    all_rank_by_criteria = [[1, 4, 3, 2],
+                            [1, 3, 2, 4],
                             [1, 2, 3, 4],
+                            [4, 1, 3, 2],
+                            [3, 1, 2, 4],
                             [1, 2, 3, 4],
-                            [1, 2, 3, 4],
-                            [1, 2, 3, 4],
-                            [1, 2, 3, 4],
-                            [1, 2, 3, 4],
-                            [1, 2, 3, 4]]
+                            [2, 1, 3, 4],
+                            [1, 3, 4, 2]]
 
     mymatrix = rankthem(rank_criteria_vec, 'Main Criteria Matrix')
-
     criteria = {}
-    alljsons = {}
+
+    f = open('test.json', 'w')
+    f.write(
+        "{\n \"name\": \"UN Policy Decision\", \n \"method\": \"approximate\", \n \"criteria\": [\"1-individual-choice\", \"2-economic-stability\" , \"3-degree-being-impacted\", \"4-distance\",\"5-cultural-proximity\", \"6-Human-right-politics\", \"7-biocapacity\", \"8-public-health\"], \n  \"subCriteria\": {}, \n \"alternatives\": [\"policyA\", \"policyB\", \"policyC\", \"policyD\"], \n \"preferenceMatrices\": { \n")
+    f.close()
+
+    val = 1
+    np_ndarray_to_json("criteria", mymatrix, val)
 
     for i in range(0, k):
         rank_vec = all_rank_by_criteria[i]
         criteria['criteria'+str(i)] = rankthem(rank_vec, 'Criteria'+str(i)+' Matrix')
         temp_matrix = criteria['criteria'+str(i)]
         print('Did i = ', i, ' with matrix output size ', criteria['criteria'+str(i)].shape)
+        val = 0 if i == k-1 else 1
+        np_ndarray_to_json('alternatives:'+matrix_criteria[i], criteria['criteria'+str(i)], val)
 
-    np_ndarray_to_json('criteria0', criteria['criteria0'])
-
-    #with open('mymodel.json') as f:
-    #    myjson = json.dumps(json_model)
-    #    f.write(myjson)
+    f = open('test.json', 'a')
+    f.write('] \n } \n }')
+    f.close()
 
 
-def np_ndarray_to_json(title, mat):
+def np_ndarray_to_json(title, mat, val):
     print('hello np_ndarray_to_json')
     I = mat.shape[0]
     J = mat.shape[1]
-    f = open('test.json', 'w')
+    f = open('test.json', 'a')
     heading = "\"{}\": [\n".format(title)
     f.write(heading)
     for i in range(I):
@@ -52,9 +57,12 @@ def np_ndarray_to_json(title, mat):
             f.write(str(mat[i, j]))
             if not j == J-1:
                 f.write(str(', '))
+        f.write(']')
+        if not i == I - 1:
+            f.write(',')
+        f.write('\n')
+    if val > 0:
         f.write('], \n')
-
-    f.write(']')
     f.close()
 
 
@@ -78,7 +86,6 @@ def rankthem(rank_vec, title):
                     matrix_out[j, i] = round(1 / importance, 4)
             else:
                 print('what now?')
-
 
     #print('-------------Rank successful for ', title, '------------')
     #print('Input rank vector: ', rank_vec)
