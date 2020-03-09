@@ -1,0 +1,68 @@
+{
+  "name": "UN Policy Decision",
+  "method": "approximate",
+  "criteria": ["1-individual-choice", "2-economic-stability" , "3-degree-being-impacted", "4-distance",
+               "5-cultural-proximity", "6-Human-right-politics", "7-biocapacity", "8-public-health"],
+  "subCriteria": {},
+  "alternatives": ["policyA", "policyB", "policyC", "policyD"],
+  "preferenceMatrices": {
+    "criteria": [
+      [1    , 0.5   , 0.3333, 0.25  , 0.2   , 0.1667, 0.1429, 0.125 ],
+      [2    , 1    , 0.5   , 0.3333, 0.25  , 0.2   , 0.1667, 0.1429],
+      [3    , 2    , 1    , 0.5   , 0.3333, 0.25  , 0.2   , 0.1667],
+      [4    , 3    , 2    , 1    , 0.5   , 0.3333, 0.25  , 0.2   ],
+      [5    , 4    , 3    , 2    , 1    , 0.5   , 0.3333, 0.25  ],
+      [6    , 5    , 4    , 3    , 2    , 1    , 0.5   , 0.3333],
+      [7    , 6    , 5    , 4    , 3    , 2    , 1    , 0.5   ],
+      [8    , 7    , 6    , 5    , 4    , 3    , 2    , 1    ]
+    ],
+    "alternatives:1-individual-choice": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:2-economic-stability": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:3-degree-being-impacted": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:4-distance": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:5-cultural-proximity": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:6-Human-right-politics": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:7-biocapacity": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ],
+    "alternatives:8-public-health": [
+      [1    , 0.5   , 0.3333, 0.25  ],
+      [2    , 1     , 0.5   , 0.3333],
+      [3    , 2     , 1     , 0.5   ],
+      [4    , 3     , 2     , 1     ]
+    ]
+  }
+}
