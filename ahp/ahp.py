@@ -5,7 +5,7 @@ from pyahp import parse
 
 def main():
 
-    with open('test.json') as json_model:
+    with open('current_un_model.json') as json_model:
         model = json.load(json_model)
 
     ahp_model = parse(model)

@@ -4,40 +4,44 @@ import json
 
 def main():
 
-    matrix_criteria = ["1-individual-choice", "2-economic-stability",
-                        "3-degree-being-impacted", "4-distance",
-                        "5-cultural-proximity", "6-Human-right-politics",
-                        "7-biocapacity", "8-public-health"]
+    matrix_criteria = ["1-individual-choice", "2-economic-stability", "3-vulnerability", "4-cost",
+                       "5-cultural-proximity", "6-human-right-politics", "7-biocapacity"]
     k = len(matrix_criteria)
 
-    rank_criteria_vec = [1, 6, 8, 5, 2, 6, 7, 1]
-    all_rank_by_criteria = [[1, 4, 3, 2],
-                            [1, 3, 2, 4],
-                            [1, 2, 3, 4],
-                            [4, 1, 3, 2],
-                            [3, 1, 2, 4],
-                            [1, 2, 3, 4],
-                            [2, 1, 3, 4],
-                            [1, 3, 4, 2]]
+    rank_criteria_vec = [1, 5, 7, 6, 2, 4, 3]
+    all_rank_by_criteria = [[2, 3, 4, 1],
+                            [2, 3, 4, 1],
+                            [4, 2, 1, 3],
+                            [3, 4, 1, 2],
+                            [2, 3, 4, 1],
+                            [3, 4, 2, 1],
+                            [3, 4, 3, 1]]
 
     mymatrix = rankthem(rank_criteria_vec, 'Main Criteria Matrix')
     criteria = {}
 
-    f = open('test.json', 'w')
+    f = open('current_un_model.json', 'w')
+    # write the fixed headers
     f.write(
-        "{\n \"name\": \"UN Policy Decision\", \n \"method\": \"approximate\", \n \"criteria\": [\"1-individual-choice\", \"2-economic-stability\" , \"3-degree-being-impacted\", \"4-distance\",\"5-cultural-proximity\", \"6-Human-right-politics\", \"7-biocapacity\", \"8-public-health\"], \n  \"subCriteria\": {}, \n \"alternatives\": [\"policyA\", \"policyB\", \"policyC\", \"policyD\"], \n \"preferenceMatrices\": { \n")
+        "{\n \"name\": \"UN Policy Decision\", \n \"method\": \"approximate\", \n \"criteria\": ["
+        "\"1-individual-choice\", \"2-economic-stability\" , \"3-vulnerability\", \"4-cost\","
+        "\"5-cultural-proximity\", \"6-human-right-politics\", \"7-biocapacity\"], "
+        "\n  \"subCriteria\": {}, \n \"alternatives\": [\"policyA\", \"policyB\", \"policyC\", \"policyD\"], "
+        "\n \"preferenceMatrices\": { \n")
     f.close()
 
     val = 1
-    np_ndarray_to_json("criteria", mymatrix, val)
+    np_ndarray_to_json("criteria", mymatrix, val)          # write to json by brute string force
 
     for i in range(0, k):
         rank_vec = all_rank_by_criteria[i]
         criteria['criteria'+str(i)] = rankthem(rank_vec, 'Criteria'+str(i)+' Matrix')
         temp_matrix = criteria['criteria'+str(i)]
-        print('Did i = ', i, ' with matrix output size ', criteria['criteria'+str(i)].shape)
+        temp_matrix_name = matrix_criteria[i]
+        print('Did i = ', i, ' with matrix output size ', temp_matrix.shape)
+        # use val to control for writing the last curly brackets in json
         val = 0 if i == k-1 else 1
-        np_ndarray_to_json('alternatives:'+matrix_criteria[i], criteria['criteria'+str(i)], val)
+        np_ndarray_to_json('alternatives:'+ temp_matrix_name, temp_matrix, val)
 
     f = open('test.json', 'a')
     f.write('] \n } \n }')
@@ -48,7 +52,7 @@ def np_ndarray_to_json(title, mat, val):
     print('hello np_ndarray_to_json')
     I = mat.shape[0]
     J = mat.shape[1]
-    f = open('test.json', 'a')
+    f = open('current_un_model.json', 'a')
     heading = "\"{}\": [\n".format(title)
     f.write(heading)
     for i in range(I):
