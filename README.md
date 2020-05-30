@@ -1,2 +1,3 @@
 # MCM-20
-Fish Migrating North Project for MCM 2020
+
+Some code for MCM 2020 project. Includes AHP and misc Fish Migration things. 
